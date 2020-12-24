@@ -4,7 +4,7 @@ const Test = () => {
     const [username, setUsername] = useState('');
 
     useEffect(() => {
-        fetch('/api')
+        fetch('/test')
             .then(res => res.json())
             .then(data => setUsername(data.username));
     })
