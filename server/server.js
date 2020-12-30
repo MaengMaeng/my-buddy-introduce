@@ -1,21 +1,37 @@
+require('dotenv').config();
+require('./db')();
+
 const express = require('express');
+
+const passport = require('passport');
+const session = require('express-session');
+
 const app = express();
-
-const port = process.env.PORT || 5000;
-
-const db = require('./db');
-db();
-
-// 임시 작성
-const Test = require('./models/Test');
 
 app.use(express.json());
 
-//임시 작성
-app.use('/test', async(req, res)=> {
-    Test.find({}).then((data) => res.json({username:data[0].name}));
-});
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
 
-app.listen(port, ()=>{
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./passport');
+
+app.get('/',(req, res) => {
+    res.json(req.session.passport.user);
+})
+
+app.get('/auth/github', passport.authenticate('github'));
+
+app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.redirect('/');
+    });
+
+app.listen(port = 5000, () => {
     console.log(`express is running on ${port}`);
 })
