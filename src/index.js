@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Introduce from './Introduce';
+import TableLayout from './TableLayout';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <Introduce />
+    <TableLayout />
   </React.StrictMode>,
   document.getElementById('root')
 );
