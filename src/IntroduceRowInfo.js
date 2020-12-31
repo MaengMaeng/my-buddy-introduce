@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const IntroduceRowInfo = ({ key, data}) => {
+const IntroduceRowInfo = ({data}) => {
     const [RowData, setRowData] = useState(data);
 
     return (
