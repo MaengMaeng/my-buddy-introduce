@@ -5,7 +5,7 @@ const IntroduceRowInfo = ({ key, data}) => {
 
     return (
         <>
-        <tr key={key}>
+        <tr>
             <td>{RowData.number}</td>
             <td>{RowData.title}</td>
             <td>{RowData.contents}</td>
