@@ -2,13 +2,19 @@ import React, { useState, useEffect } from "react";
 
 const TableLayout = () => {
     const [rows, setRows] = useState([]);
+    // const [inputs, setInputs] = useState({
+    //     item: '',
+    //     content: ''
+    // })
+
+        
 
     const changeText = id => e => { 
-        const { item, content} = e.target;
+        const { value, name} = e.target;
+
         const tempRows = rows.map(row => { 
             if (row.id === id + 1) { 
-                row["item"] = item; 
-                row["content"] = content; 
+                row[name] = value; 
             } return row; 
         }); 
         setRows(tempRows); 
@@ -17,8 +23,8 @@ const TableLayout = () => {
     const addRow = () => {
         let data = {
           id: rows.length + 1,
-          item: "",
-          content: ""
+          item: '',
+          content: ''
         };
         setRows([...rows, data]);
       };
@@ -56,14 +62,14 @@ const TableLayout = () => {
                     <tr key={i}>
                       <td>{i + 1}</td>
                       <td>
-                      <input
+                      <input name="item"
                           type="text"
                           onChange={changeText(i)}
                           value={d.item}
                         />
                       </td>
                       <td>
-                        <input
+                        <input name="content"
                           type="text"
                           onChange={changeText(i)}
                           value={d.content}
