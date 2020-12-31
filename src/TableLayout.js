@@ -2,13 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const TableLayout = () => {
     const [rows, setRows] = useState([]);
-    // const [inputs, setInputs] = useState({
-    //     item: '',
-    //     content: ''
-    // })
-
-        
-
+    
     const changeText = id => e => { 
         const { value, name} = e.target;
 
