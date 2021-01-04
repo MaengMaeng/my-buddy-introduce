@@ -7,17 +7,17 @@ const LoginProvider = ({children}) => {
     const [profile, setProfile] = useState({
         username:'',
         image:'',
-        type:''
+        email:''
     })
 
     const onLogin = (profile) => {
-        setLogged(true);
         setProfile(profile);
+        setLogged(true);
     }
     
     const onLogout = () => {
+        setProfile({image:'', username:'', email:''});
         setLogged(false);
-        setProfile({image:'', username:'', email:'', type:''});
     }
 
     const init = {

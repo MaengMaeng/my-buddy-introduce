@@ -13,3 +13,10 @@
 
     display: block;
 }
+
+.btn-login,
+.btn-logout{
+    margin: 0 20px 0 20px;
+
+    border: 1px solid blue;
+}

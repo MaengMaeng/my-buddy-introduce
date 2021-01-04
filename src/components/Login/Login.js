@@ -31,14 +31,44 @@ const Login = () => {
         });
     }, []);
 
+    const fetchLogin = (profile, id, social) => {
+        fetch('/auth/login', {
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({profile, id, social})
+        })
+            .then(res => res.json())
+            .then(user => {
+                const {
+                    username,
+                    email,
+                    image
+                } = user;
+
+                onLogin({ username, email, image });
+                onClose();
+            })
+    }
+
     const onKakaoSuccess = (res) => {
+        console.log(res);
+
         const username = res.profile.kakao_account.profile.nickname;
         const image = res.profile.kakao_account.profile.thumbnail_image_url;
         const email = res.profile.kakao_account.email;
-        const type = 'kakao';
+        
+        const profile = {
+            username,
+            image,
+            email
+        }
+        
+        const id = res.profile.id;
+        const social = 'kakao';
 
-        onLogin({ username, email, image, type });
-        onClose();
+        fetchLogin(profile, id, social);
     }
 
     const onFacebookSuccess = (res) => {
@@ -47,10 +77,17 @@ const Login = () => {
         const username = res.name;
         const image = res.picture ? res.picture.data.url : '';
         const email = res.email;
-        const type = 'facebook';
+        
+        const profile = {
+            username,
+            image,
+            email
+        }
+        
+        const id = res.userID;
+        const social = 'facebook';
 
-        onLogin({ username, email, image, type });
-        onClose();
+        fetchLogin(profile, id, social);
     }
 
     const onSnsLogout = () => {
