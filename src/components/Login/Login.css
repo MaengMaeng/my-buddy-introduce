@@ -1,0 +1,15 @@
+.login-form{
+    display: flex;
+
+    flex-direction: column;
+}
+
+.login-form > button,
+.login-form > span > button{
+    width: calc(100% - 4px) !important;
+    height: 60px !important;
+
+    margin: 2px;
+
+    display: block;
+}
