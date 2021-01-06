@@ -1,0 +1,43 @@
+.overlay{
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+.modal{
+    box-sizing: border-box;
+    position: absolute;
+    
+    width: 50%;
+    /* height: 50%; */
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    outline: 0;
+
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.modal__title,
+.modal__contents,
+.modal__btn-close{
+    width: 100%;
+}
+
+.modal__contents{
+    flex-grow: 1;
+}
+
+.hide{
+    display: none;
+}

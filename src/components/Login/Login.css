@@ -1,0 +1,22 @@
+.login-form{
+    display: flex;
+
+    flex-direction: column;
+}
+
+.login-form > button,
+.login-form > span > button{
+    width: calc(100% - 4px) !important;
+    height: 60px !important;
+
+    margin: 2px;
+
+    display: block;
+}
+
+.btn-login,
+.btn-logout{
+    margin: 0 20px 0 20px;
+
+    border: 1px solid blue;
+}

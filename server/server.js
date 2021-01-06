@@ -5,8 +5,11 @@ const express = require('express');
 const session = require('express-session');
 
 const app = express();
-
 app.use(express.json());
+
+const auth = require('./router/auth');
+
+app.use('/auth', auth);
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
