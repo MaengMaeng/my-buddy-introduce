@@ -31,10 +31,11 @@ exports.test = (req, res) => {
 exports.sendInviteMail = (req, res) => {
     const {fromName, toMail} = req.body;
 
+    const link = process.env.HOME_URL;
     const subject = `${fromName}님이 내친소로 초대합니다!`;
     const html = '<h1>내친소로 초대합니다!</h1>'
                + `<p>${fromName}님이 내친소로 초대하셨습니다.</p><br><br><br>`
-               + '<p><a href="http://localhost:3000">여기를 눌러 함께하세요.</a></p>'
+               + `<p><a href="${link}">여기를 눌러 함께하세요.</a></p>`
 
     let mailOption = {
         from: process.env.GOOGLE_ID,
