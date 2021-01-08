@@ -1,7 +1,6 @@
-const router = require('express').Router();
-const User = require('../models/User');
+const User = require('../../models/User');
 
-const findBySocialId = (req, res, next) => {
+exports.findBySocialId = (req, res, next) => {
     const {social, id} = req.body;
 
     User.findOne({'social' : { $elemMatch: { id, social }}})
@@ -12,7 +11,7 @@ const findBySocialId = (req, res, next) => {
         });
 }
 
-const findByEmail = (req, res, next) => {
+exports.findByEmail = (req, res, next) => {
     const {profile, id, social} = req.body;
 
     User.findOne({email:profile.email})
@@ -26,7 +25,7 @@ const findByEmail = (req, res, next) => {
         })
 }
 
-const createUser = (req, res) => {
+exports.createUser = (req, res) => {
     const {profile, social, id} = req.body;
     
     console.log(req.body);
@@ -39,7 +38,3 @@ const createUser = (req, res) => {
       .then(user => res.json(user));
 }
 
-router.use('/login', [findBySocialId, findByEmail, createUser]);
-
-
-module.exports = router;

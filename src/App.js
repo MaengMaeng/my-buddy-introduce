@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       <LoginProvider>
         <Header/>
+        <Mail></Mail>
+        <Introduce />
+        <TableLayout />
       </LoginProvider>
-      <Mail></Mail>
-      <Introduce />
-      <TableLayout />
     </div>
   );
 }
