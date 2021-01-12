@@ -8,8 +8,10 @@ const app = express();
 app.use(express.json());
 
 const auth = require('./router/auth');
+const mail = require('./router/mail');
 
 app.use('/auth', auth);
+app.use('/mail', mail);
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
