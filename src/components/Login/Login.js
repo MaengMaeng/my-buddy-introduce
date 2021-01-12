@@ -71,6 +71,10 @@ const Login = () => {
         fetchLogin(profile, id, social);
     }
 
+    const onKakaoFailure = (res) => {
+        console.log(res);
+    }
+
     const onFacebookSuccess = (res) => {
         console.log(res);
 
@@ -125,7 +129,7 @@ const Login = () => {
                     <KakaoLogin
                         jsKey={process.env.REACT_APP_KAKAO_JS_KEY}
                         onSuccess={onKakaoSuccess}
-                        onFailure={(res) => console.log('failure', res)}
+                        onFailure={onKakaoFailure}
                         getProfile={true}
                     />
 

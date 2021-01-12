@@ -5,20 +5,8 @@ const Mail = () => {
     const [toMail, setToMail] = useState();
     const { logged, profile } = useContext(LoginContext);
 
-    const onSendMail = () => {
-        if(logged){
-            fetch('/mail/test', {
-                method:'POST',
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                body:JSON.stringify({toMail})
-            })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-            })
-        }
+    const onChangeHandler = (e) => {
+        setToMail(e.target.value);
     }
 
     const onSendInvite = () => {
@@ -40,10 +28,7 @@ const Mail = () => {
     
     return (
         <>
-            <input type="text" defaultValue={toMail} onChange={e => setToMail(e.target.value)}/>
-            {/* <button onClick={onSendMail}>
-                Send Mail
-            </button> */}
+            <input type="text" defaultValue={toMail} onChange={onChangeHandler}/>
             <button onClick={onSendInvite}>
                 Send Invite Mail
             </button>
